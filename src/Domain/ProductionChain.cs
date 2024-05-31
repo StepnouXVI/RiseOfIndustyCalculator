@@ -1,11 +1,7 @@
 ﻿namespace Domain;
 
-public class ProductionChain
+public class ProductionChain(ProductionChainNode root)
 {
-    public ProductionChainNode Root { get; init; }
+    public ProductionChainNode Root { get; init; } = root;
     public double TotalPrice { get; set; } = 0;
-    public ProductionChain(ProductionChainNode root)
-    {
-        Root = root;
-    }
 }

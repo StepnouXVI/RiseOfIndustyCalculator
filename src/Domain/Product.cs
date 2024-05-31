@@ -5,17 +5,9 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Product
+    public class Product(string name, ulong id)
     {
-        public ulong Id { get; init; }
-        public string Name { get; init; }
-        public double Price { get; init; }
-
-        public Product(string name, double price, ulong id)
-        {
-            Name = name;
-            Price = price;
-            Id = id;
-        }
+        public ulong Id { get; init; } = id;
+        public string Name { get; init; } = name;
     }
 }

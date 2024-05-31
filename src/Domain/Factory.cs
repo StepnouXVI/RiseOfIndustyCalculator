@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Factory
+    public class Factory(double price, string name, ulong id)
     {
-        public double Price { get; init; } = 0;
+        public double Price { get; init; } = price;
 
-        public double MonthlyAmortization { get; init; } = 0;
+        public string Name { get; init; } = name;
 
-        public string Name { get; init; }
-        
-        public ulong Id { get; init; }
+        public ulong Id { get; init; } = id;
     }
 }

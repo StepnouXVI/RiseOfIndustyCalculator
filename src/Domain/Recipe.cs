@@ -3,27 +3,26 @@ namespace Domain
     public class Recipe
     {
         public ulong Id { get; init; }
-        public string Name { get; init; }
-        
-        public uint FactoryId { get; init; }
+        public ulong FactoryId { get; init; }
+        public uint ProductionTime { get; init; }
         public Dictionary<ulong, ulong> InputProducts { get; init; } = new Dictionary<ulong, ulong>();
-        public Dictionary<ulong, ulong> OutputProducts { get; init; } = new Dictionary<ulong, ulong>();
+        public Dictionary<ulong, ulong> OutputProducts { get; init; }
 
-        public Recipe(string name, Dictionary<ulong, ulong> inputProducts, Dictionary<ulong, ulong> outputProducts, ulong id, uint factoryId)
+        public Recipe(Dictionary<ulong, ulong> inputProducts, Dictionary<ulong, ulong> outputProducts, ulong id, ulong factoryId, uint productionTime)
         {
-            Name = name;
             InputProducts = inputProducts;
             OutputProducts = outputProducts;
             Id = id;
             FactoryId = factoryId;
+            ProductionTime = productionTime;
         }
 
-        public Recipe(string name, Dictionary<ulong, ulong> outputProducts, ulong id, uint factoryId)
+        public Recipe( Dictionary<ulong, ulong> outputProducts, ulong id, ulong factoryId, uint productionTime)
         {
-            Name = name;
             OutputProducts = outputProducts;
             Id = id;
             FactoryId = factoryId;
+            ProductionTime = productionTime;
         }
     }
 }

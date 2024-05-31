@@ -1,20 +1,14 @@
 ﻿namespace Domain;
 
-public class ProductionChainNode
+public class ProductionChainNode(Factory factory, double quantity, double price, Recipe recipe, Product product)
 {
-    public Factory Factory { get; init; }
-    public double Quantity { get; init; }
-    public double Price { get; init; }
-    
-    public Recipe Recipe { get; set; }
-    
+    public Factory Factory { get; init; } = factory;
+    public Recipe Recipe { get; set; } = recipe;
+    public Product Product { get; init; } = product;
+    public double Quantity { get; init; } = quantity;
+    public double Price { get; init; } = price;
+
+
+
     public List<ProductionChainNode> Children { get; set; } = new List<ProductionChainNode>();
-    
-    public ProductionChainNode(Factory factory, double quantity, double price, Recipe recipe)
-    {
-        Factory = factory;
-        Quantity = quantity;
-        Price = price;
-        Recipe = recipe;
-    }
 }
