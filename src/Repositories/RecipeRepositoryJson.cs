@@ -11,11 +11,11 @@ public class RecipeRepositoryJson : IRecipesRepository, IDisposable
 
     public RecipeRepositoryJson(string path)
     {
-        if (!File.Exists(path))
-            throw new FileNotFoundException("File not found");
-
         _path = path;
-        LoadRecipes();
+        if (File.Exists(path))
+        {
+            LoadRecipes();
+        }
     }
 
     private void LoadRecipes()
@@ -66,13 +66,18 @@ public class RecipeRepositoryJson : IRecipesRepository, IDisposable
         return result;
     }
 
-    public List<Recipe> GetRecipesByFactoryId(uint factoryId)
+    public List<Recipe> GetRecipesByFactoryId(ulong factoryId)
     {
         var result = _recipes.Values
             .Where(x => x.FactoryId == factoryId)
             .ToList();
         
         return result;
+    }
+
+    public List<Recipe> GetAllRecipes()
+    {
+        return _recipes.Values.ToList();
     }
 
     public void Dispose()

@@ -9,5 +9,6 @@ public interface IRecipesRepository
     void UpdateRecipe(Recipe recipe);
     void DeleteRecipe(ulong id);
     Recipe GetRecipeByProductId(ulong productId);
-    List<Recipe> GetRecipesByFactoryId(uint factoryId);
+    List<Recipe> GetRecipesByFactoryId(ulong factoryId);
+    List<Recipe> GetAllRecipes();
 }

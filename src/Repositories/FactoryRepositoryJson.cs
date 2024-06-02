@@ -11,11 +11,11 @@ public class FactoryRepositoryJson  : IFactoriesRepository, IDisposable
 
     public FactoryRepositoryJson(string path)
     {
-        if (!File.Exists(path))
-            throw new Exception("File not found");
-
         _path = path;
-        LoadFactories();
+        if (File.Exists(path))
+        {
+            LoadFactories();
+        }
     }
 
     private void LoadFactories()

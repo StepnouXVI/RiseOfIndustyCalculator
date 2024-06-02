@@ -11,11 +11,11 @@ public class ProductsRepositoryJson : IProductsRepository, IDisposable
 
     public ProductsRepositoryJson(string path)
     {
-        if (!File.Exists(path))
-            throw new FileNotFoundException("File not found");
-
         _path = path;
-        LoadProducts();
+        if (File.Exists(path))
+        {
+            LoadProducts();
+        }
     }
     private void LoadProducts()
     {
