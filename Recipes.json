@@ -1,1 +1,1 @@
-[{"Id":1,"FactoryId":1,"ProductionTime":15,"InputProducts":{},"OutputProducts":{"1":10}},{"Id":2,"FactoryId":2,"ProductionTime":15,"InputProducts":{},"OutputProducts":{"2":10}}]
+[{"Id":1,"FactoryId":1,"ProductionTime":15,"InputProducts":{},"OutputProducts":{"1":10}},{"Id":2,"FactoryId":2,"ProductionTime":15,"InputProducts":{},"OutputProducts":{"2":10}},{"Id":3,"FactoryId":3,"ProductionTime":15,"InputProducts":{},"OutputProducts":{"3":10}},{"Id":4,"FactoryId":4,"ProductionTime":15,"InputProducts":{"2":6,"3":3},"OutputProducts":{"4":3}}]

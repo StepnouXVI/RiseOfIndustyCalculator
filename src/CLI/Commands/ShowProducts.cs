@@ -1,9 +1,8 @@
-﻿using Domain;
+﻿using Services;
 using Spectre.Console;
-using Services;
 using Spectre.Console.Cli;
 
-namespace CLI;
+namespace CLI.Commands;
 
 public class ShowProducts(IProductsRepository productsRepository): Command
 {

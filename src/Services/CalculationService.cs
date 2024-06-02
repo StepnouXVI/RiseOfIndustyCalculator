@@ -7,15 +7,11 @@ public class CalculationService(
     IProductsRepository productsRepository,
     IRecipesRepository recipesRepository)
 {
-    private readonly IFactoriesRepository _factoriesRepository = factoriesRepository;
-    private readonly IProductsRepository _productsRepository = productsRepository;
-    private readonly IRecipesRepository _recipesRepository = recipesRepository;
-
-    public Task<ProductionChain> CreateProductionChain(ulong productId, double requiredQuantity)
+    public ProductionChain CreateProductionChain(ulong productId, double requiredQuantity)
     {
-        var product = _productsRepository.GetProduct(productId);
-        var recipe = _recipesRepository.GetRecipeByProductId(productId);
-        var factory = _factoriesRepository.GetFactory(recipe.FactoryId);
+        var product = productsRepository.GetProduct(productId);
+        var recipe = recipesRepository.GetRecipeByProductId(productId);
+        var factory = factoriesRepository.GetFactory(recipe.FactoryId);
 
         var numberOfFactories = (requiredQuantity / recipe.OutputProducts[productId])*recipe.ProductionTime/30.0;
         var root = new ProductionChainNode(factory, numberOfFactories, factory.Price*numberOfFactories, recipe, product);
@@ -25,7 +21,7 @@ public class CalculationService(
         var result = new ProductionChain(root);
         result.TotalPrice = totalPrice;
         
-        return Task.FromResult(result);
+        return result;
     }
     
     private double FillChildren(ProductionChainNode parent)
@@ -35,11 +31,11 @@ public class CalculationService(
         
         foreach (var input in inputProducts)
         {
-            var product = _productsRepository.GetProduct(input.Key);
-            var recipe = _recipesRepository.GetRecipeByProductId(input.Key);
-            var factory = _factoriesRepository.GetFactory(recipe.FactoryId);
+            var product = productsRepository.GetProduct(input.Key);
+            var recipe = recipesRepository.GetRecipeByProductId(input.Key);
+            var factory = factoriesRepository.GetFactory(recipe.FactoryId);
             
-            var requiredQuantity = parent.Quantity * input.Value;
+            var requiredQuantity = parent.Quantity * input.Value*30.0/recipe.ProductionTime;
             var numberOfFactories = (requiredQuantity / recipe.OutputProducts[input.Key])*recipe.ProductionTime/30.0;
             var child = new ProductionChainNode(factory, numberOfFactories, numberOfFactories * factory.Price, recipe, product);
             

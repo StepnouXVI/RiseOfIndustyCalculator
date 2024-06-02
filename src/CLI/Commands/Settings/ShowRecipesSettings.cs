@@ -1,6 +1,6 @@
 ﻿using Spectre.Console.Cli;
 
-namespace CLI;
+namespace CLI.Commands.Settings;
 
 public class ShowRecipesSettings : CommandSettings
 {

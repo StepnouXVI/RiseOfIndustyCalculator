@@ -2,7 +2,7 @@
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace CLI;
+namespace CLI.Commands;
 
 public class ShowFactories(IFactoriesRepository factoriesRepository) : Command
 {

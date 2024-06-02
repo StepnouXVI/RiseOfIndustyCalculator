@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using CLI;
+using CLI.Commands;
+using CLI.Commands.Settings;
 using Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
@@ -34,6 +36,8 @@ app.Configure(config =>
         show.AddCommand<ShowFactories>("factories");
         show.AddCommand<ShowRecipes>("recipes");
     });
+
+    config.AddCommand<Calculate>("calculate");
     
     config.SetExceptionHandler((ex, resolver) =>
     {

@@ -1,9 +1,10 @@
-﻿using Domain;
+﻿using CLI.Commands.Settings;
+using Domain;
 using Services;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-namespace CLI;
+namespace CLI.Commands;
 
 internal class AddFactoryCommand(IFactoriesRepository factoriesRepository) : Command<AddSettings>
 {

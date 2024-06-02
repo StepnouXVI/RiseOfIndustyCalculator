@@ -2,8 +2,9 @@
 using Services;
 using Spectre.Console;
 using Spectre.Console.Cli;
+using CLI.Commands.Settings;
 
-namespace CLI;
+namespace CLI.Commands;
 
 public class ShowRecipes(IRecipesRepository recipesRepository, IFactoriesRepository factoriesRepository)
     : Command<ShowRecipesSettings>
@@ -38,13 +39,14 @@ public class ShowRecipes(IRecipesRepository recipesRepository, IFactoriesReposit
             .RoundedBorder()
             .AddColumn("Id")
             .AddColumn("Factory Id")
+            .AddColumn("Production term")
             .AddColumn("Input")
             .AddColumn("Output")
             .ShowRowSeparators();
 
         foreach (var recipe in recipes)
         {
-            table.AddRow(new Markup(recipe.Id.ToString()), new Markup(recipe.FactoryId.ToString()),
+            table.AddRow(new Markup(recipe.Id.ToString()), new Markup(recipe.FactoryId.ToString()),new Markup(recipe.ProductionTime.ToString()),
                 CreateTableOfProducts(recipe.InputProducts), CreateTableOfProducts(recipe.OutputProducts));
         }
         
